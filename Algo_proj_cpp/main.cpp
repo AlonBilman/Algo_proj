@@ -3,7 +3,7 @@
 #include <stdlib.h>
 using namespace std;
 
-void main()
+int main()
 {
 	int verteices_number = 0; 
 	int edges_number = 0;
@@ -19,25 +19,26 @@ void main()
 	
 	for (int i = 1; i <= edges_number; ++i)
 	{
+		int v1, v2;
+		cin >> v1 >> v2;
+
 		try
 		{
-			int v1, v2;
-			cin >> v1 >> v2; 
-			if (v1 > verteices_number || v1 < 1 || v2 > verteices_number || v2 < 1 )
+			if (v1 > verteices_number || v1 < 1 || v2 > verteices_number || v2 < 1 || verteices_number<=0 )
 			{
 				throw("invalid input");
 			}
-			graph.AddEdge(v1, v2);
 		}
 		catch (string error)
 		{
 			cout << error << endl; 
 			exit(1);
 		}
+		graph.AddEdge(v1, v2);
 	}
 	graph.MakeSuperGraph(verteices_number, edges_number); //by reference 
 	cout << verteices_number << " " << edges_number << endl;
 
 
-
+	return 0;
 }

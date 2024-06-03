@@ -17,6 +17,7 @@ private:
 	Graph* TransposeGraph = nullptr;
 	vector<int> arrayOfRoots;
 
+
 public:
 	
 	~Graph();
@@ -29,7 +30,7 @@ public:
 	void AddEdge(int v, int u);
 	void RemoveEdge(int u, int v);
 
-	vector<int> DFS(vector<int> mainLoop, int& verteices, int& edges);
+	vector<int> DFS(vector<int>& mainLoop, int& verteices, int& edges);
 
 	void MakeGtrans();
 
