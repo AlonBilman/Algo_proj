@@ -26,10 +26,10 @@ int main()
 		{
 			if (v1 > verteices_number || v1 < 1 || v2 > verteices_number || v2 < 1 || verteices_number<=0 )
 			{
-				throw("invalid input");
+				throw "invalid input";
 			}
 		}
-		catch (string error)
+		catch (const char* error)
 		{
 			cout << error << endl; 
 			exit(1);

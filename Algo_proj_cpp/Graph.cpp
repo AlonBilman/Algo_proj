@@ -48,9 +48,9 @@ void Graph::AddEdge(int u, int v)
 		try
 		{
 			if (*i == v)
-				throw("There is already a edge like this");
+				throw "There is already a edge like this";
 		}
-		catch (string error)
+		catch (const char* error)
 		{
 			cout << error << endl;
 			exit(1);
@@ -72,9 +72,9 @@ void Graph::RemoveEdge(int u, int v)
 				return;
 			}
 		}
-		throw("There is not such an edge..");
+		throw "There is not such an edge..";
 	}
-	catch (string error)
+	catch (const char* error)
 	{
 		cout << error << endl;
 		exit(1);
