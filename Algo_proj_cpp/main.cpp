@@ -11,34 +11,46 @@ int main()
 	cin >> verteices_number; 
 	cout << "Please enter the numbers of edges" << endl;
 	cin >> edges_number;
-
-	Graph graph;
-	graph.setEdgesNumber(edges_number);
-	graph.setVerteicesNumber(verteices_number);
-	graph.MakeEmptyGraph();
 	
-	for (int i = 1; i <= edges_number; ++i)
+	try
 	{
-		int v1, v2;
-		cin >> v1 >> v2;
+		if (verteices_number < 0 || edges_number < 0)
+			throw "invalid input";
 
-		try
+		Graph graph;
+		graph.setEdgesNumber(edges_number);
+		graph.setVerteicesNumber(verteices_number);
+		graph.MakeEmptyGraph();
+
+
+		for (int i = 1; i <= edges_number; ++i)
 		{
-			if (v1 > verteices_number || v1 < 1 || v2 > verteices_number || v2 < 1 || verteices_number<=0 )
+			int v1, v2;
+			cin >> v1 >> v2;
+
+			try
 			{
-				throw "invalid input";
+				if (v1 > verteices_number || v1 < 1 || v2 > verteices_number || v2 < 1)
+				{
+					throw "invalid input";
+				}
 			}
+			catch (const char* error)
+			{
+				cout << error << endl;
+				exit(1);
+			}
+			graph.AddEdge(v1, v2);
 		}
-		catch (const char* error)
-		{
-			cout << error << endl; 
-			exit(1);
-		}
-		graph.AddEdge(v1, v2);
-	}
-	graph.MakeSuperGraph(verteices_number, edges_number); //by reference 
-	cout << verteices_number << " " << edges_number << endl;
+		graph.MakeSuperGraph(verteices_number, edges_number); //by reference 
+		cout << verteices_number << " " << edges_number << endl;
 
+	}
+	catch (const char* error)
+	{
+		cout << error << endl;
+		exit(1);
+	}
 
 	return 0;
 }
